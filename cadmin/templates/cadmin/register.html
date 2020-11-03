@@ -1,0 +1,25 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class="register">
+        <h1>The Great Django Blog - Register</h1>
+        <form method="post" action="">
+            {% csrf_token %}
+           <fieldset>
+               {{form|crispy}}
+
+           </fieldset>
+             <div class="form-group">
+                 <button class="btn btn-outline-info" type="submit">Sign up </button>
+            </div>
+        </form>
+    <div>
+        <small>Already Have an Account?</small>
+        <a href="{% url 'login' %}">Login</a>
+    </div>
+
+    </div>
+
+{% endblock %}

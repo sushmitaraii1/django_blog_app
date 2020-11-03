@@ -1,0 +1,35 @@
+{% extends "blog/base.html"  %}
+
+{% block title %}
+{{ post.title|capfirst }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+<div class="content">
+    <div class="section-inner clearfix">
+
+    <article class="media content-section">
+    <img class="rounded-circle article-img" src="{{post.author.user.author.image.url }}">
+    <div class="media-body">
+    <div class="article-metadata">
+    <a class="mr-2" href="{% url 'profile' %}">{{ post.author }}</a>
+    <small class="text-muted">{{ post.created_at|date:"F d,Y " }}</small>
+    </div>
+    <h2><a class="article-title" href="{{ post.get_absolute_url }}">{{ post.title|capfirst }}</a></h2>
+    <p class="article-content">{{ post.content }}</p>
+    <p class="post-info">
+    {% include 'blog/post_info.html' %}
+    </p>
+    </div>
+    </article>
+
+</div>
+</div>
+
+{% if post.author.user == request.user %}
+                <a href="{%url 'post-update' post.id%}" class="btn btn-secondary btn-sm mt-1 mb-1">Update</a>
+                <a href="{%url 'post-delete' post.id%}" class="btn btn-danger btn-sm mt-1 mb-1">Delete</a>
+{%endif%}
+
+{% endblock %}

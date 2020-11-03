@@ -1,0 +1,51 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class="content-section">
+         {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{%if message.tags %} class = "{{ message.tags }}" {% endif %}>{{message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif%}
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">New Category</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Create</button>
+            </div>
+
+        </form>
+    </div>
+
+{% if is_paginated %}
+
+        {% if page_obj.has_previous %}
+            <a href="?page=1" class = 'btn btn-outline-info mb-4'>First</a>
+            <a href="?page={{page_obj.previous.page_number}}" class = 'btn btn-outline-info mb-4'>Previous</a>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+            <a href="?page={{num}}" class = 'btn btn-info mb-4'>{{ num }}</a>
+            {% elif num > page_obj.number|add:'-3'%}
+            <a href="?page={{num}}" class = 'btn btn-info mb-4'>{{ num }}</a>
+
+            {% endif %}
+        {% endfor %}
+            {% if page_obj.has_next %}
+
+            <a href="?page={{page_obj.next.page_number}}" class = 'btn btn-outline-info mb-4'>Next</a>
+            <a href="?page={{page_obj.paginator.num_pages}}" class = 'btn btn-outline-info mb-4'>Last</a>
+    {% endif %}
+
+
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Feedback - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="content">
+    <div class="section-inner clearfix">
+
+        <h3>Submit Your feedback</h3>
+<!--        {% if form.non_field_errors %}-->
+<!--            <ul>-->
+<!--                {% for error in form.non_field_errors %}-->
+<!--                    <li>{{ error }}</li>-->
+<!--                {% endfor %}-->
+<!--            </ul>-->
+<!--        {% endif %}-->
+
+<!--        equivalent code-->
+        {{ form.non_field_errors }}
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <table>
+<!--                  <tr>-->
+<!--                    <td></td>-->
+<!--                        {% if form.name.errors %}-->
+<!--                            {% for error in form.name.errors %}-->
+<!--                                <td>{{ error }}</td>-->
+<!--                            {% endfor %}-->
+<!--                        {% endif %}-->
+<!--                  </tr>-->
+                <tr>
+                    <td>
+                        {{ form.name.errors }}
+<!--                        {% if form.name.value %}-->
+<!--                            <input type="text" id="id_name" name="name" value="{{ form.name.value }}">-->
+<!--                        {% else %}-->
+<!--                            <input type="text" id="id_name" name="name">-->
+<!--                        {% endif %}-->
+<!--                        # equivalent-->
+                         {{ form.name|as_crispy_field }}
+                    </td>
+                </tr>
+                <tr>
+                   <td>
+                        {{ form.email.errors }}
+                        {{ form.email|as_crispy_field }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{ form.subject.errors }}
+                        {{ form.subject|as_crispy_field }}
+                    </td>
+                </tr>
+                <tr>
+                     <td>
+                        {{ form.message.errors }}
+                        {{ form.message|as_crispy_field }}
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td> <div class="form-group">
+                 <button class="btn btn-outline-info" type="submit">Submit</button>
+            </div>
+                </tr>
+            </table>
+        </form>
+
+        </div>
+    </div>
+
+{% endblock %}
