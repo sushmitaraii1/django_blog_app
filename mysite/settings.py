@@ -137,7 +137,7 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 ADMINS = [
-    ('sushmita', 'sushmita.vacker360@gmail.com'),
+    ('sushmita', ' '),
 ]
 
 MANAGERS = ADMINS
