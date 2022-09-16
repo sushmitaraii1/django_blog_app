@@ -12,17 +12,6 @@ Developed for the purpose of learning Django. Deployed on heroku at [https://sus
 │   ├── apps.py
 │   ├── forms.py
 │   ├── migrations
-│   │   ├── 0001_initial.py
-│   │   ├── 0002_auto_20201011_1118.py
-│   │   ├── 0003_auto_20201011_1119.py
-│   │   ├── 0004_auto_20201011_1121.py
-│   │   ├── 0005_auto_20201011_1128.py
-│   │   ├── 0006_feedback.py
-│   │   ├── 0007_auto_20201016_1236.py
-│   │   ├── 0008_auto_20201018_0524.py
-│   │   ├── 0009_remove_author_email.py
-│   │   ├── 0010_auto_20201018_0904.py
-│   │   ├── 0011_auto_20201021_1311.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── sitemaps.py
